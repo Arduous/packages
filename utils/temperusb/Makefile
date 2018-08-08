@@ -6,18 +6,16 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=temperusb
-PKG_VERSION:=1.99
+PKG_VERSION:=2.0
 PKG_RELEASE:=1
 PKG_CONFIG_DEPENDS:=libusb
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/temperv14-$(PKG_VERSION)
-#PKG_SOURCE:=v$(PKG_VERSION).tar.gz
-#PKG_SOURCE_URL:=https://github.com/Arduous/temperv14/archive/
-#PKG_HASH:=55ab3a8e4b3e5bb9a6c657d7249a2e5f4447d4f0cb02ec0442b56319dc949044
+PKG_SOURCE:=v$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/Arduous/temperv14/archive/
+PKG_HASH:=a8f4ef76a2def5a2e3ec351828a042ce8f7a0963eaa6d9d8ce0c8313e2b54526
 PKG_LICENSE:=BSD-1-Clause
 PKG_LICENSE_FILES:=temperv14.c
-
-SOURCE_DIR:=/home/samuel/git/temperv14
 
 PKG_MAINTAINER := Samuel Progin <samuel.progin@gmail.com>
 
@@ -34,13 +32,6 @@ define Package/temperusb/description
   RDing TEMPer v1.4 USB thermometer are cheap devices that can be sourced everywhere on
   the Internet. This package allow to operate them from user space.
 endef
-
-define Build/Prepare
-	mkdir -p $(PKG_BUILD_DIR)
-	cp -r $(SOURCE_DIR)/* $(PKG_BUILD_DIR)
-	$(Build/Patch)
-endef
-
 
 # Package build instructions; invoke the target-specific compiler to first compile the source file, and then to link the file into the final executable
 define Build/Compile
